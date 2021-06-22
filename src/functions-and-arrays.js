@@ -31,26 +31,76 @@ function sumNumbers(numArray) {
   return sum
 }
 
-
 // Iteration #3.1 Bonus:
-function sum() {}
+function sum(arr) {
+  if (arr === undefined || arr.length == 0) return 0
 
+  let sum = 0;
+  for (let elem of arr) {
 
+    if (typeof elem == "array" || typeof elem == "object") throw Error("Unsupported data type sir or ma'am")
+
+    switch (typeof elem) {
+      case "string":
+        sum+=elem.length
+        break
+      case "number":
+        sum += elem
+        break
+      case "boolean":
+        if (elem) sum++
+        break
+      default:
+        sum += elem
+    }
+  }
+
+  return sum
+}
 
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers() {}
-
+function averageNumbers(arr) {
+  if (arr === undefined || arr.length == 0) return null
+  return sumNumbers(arr)/arr.length;
+}
 
 // Level 2: Array of strings
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
 
-function averageWordLength() { }
+function averageWordLength(arr) { 
+  if (arr === undefined || arr.length == 0) return null
+  return sum(arr)/arr.length;
+}
 
 // Bonus - Iteration #4.1
-function avg() {}
+function avg(arr) {
+  if (arr === undefined || arr.length == 0) return null
+  
+  let sumN = 0;
+  for (let elem of arr) {
+
+    if (typeof elem == "array" || typeof elem == "object") throw Error("Unsupported data type sir or ma'am")
+
+    switch (typeof elem) {
+      case "string":
+        sumN+=elem.length
+        break
+      case "number":
+        sumN += elem
+        break
+      case "boolean":
+        if (elem) sumN++
+        break
+      default:
+        sumN += elem
+    }
+  }
+
+  return sumN / arr.length;
+}
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
