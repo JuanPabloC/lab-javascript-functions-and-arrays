@@ -133,7 +133,15 @@ function uniquifyArray(arr) {
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
-function doesWordExist() {}
+function doesWordExist(array, word) {
+  if (array === undefined || array.length == 0) return null
+
+  for (const w of array){
+    if (w == word) return true;
+  }
+
+  return false
+}
 
 
 
