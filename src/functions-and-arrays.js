@@ -171,6 +171,13 @@ function howManyTimes(array, word) {
   return counter
 }
 
+const matrix2 = [
+  [ 1,  2, 3, 4, 5],
+  [ 1, 20, 3, 4, 5],
+  [ 1, 20, 3, 4, 5],
+  [ 1, 20, 3, 4, 5],
+  [ 1,  4, 3, 4, 5]
+]
 
 
 // Iteration #8: Bonus
@@ -197,9 +204,41 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(mat) {
+  let max = -1;
 
+  for (let x = 0; x < mat.length; x++){
+    for (let y = 0; y < mat[0].length; y++){
+      max = maxOfTwoNumbers(max, getRight(mat, x, y))
+      max = maxOfTwoNumbers(max, getDown(mat, x, y))
+      max = maxOfTwoNumbers(max, getLeft(mat, x, y))
+      max = maxOfTwoNumbers(max, getUp(mat, x, y))
+    }
+  }
 
+  return max;
+}
+
+function getRight(mat, x, y) {
+  if (y>mat[0].length-4) return -1;
+  return (mat[x][y]*mat[x][y+1]*mat[x][y+2]*mat[x][y+3]);
+}
+
+function getLeft(mat, x, y){
+  if (y<3) return -1
+  return (mat[x][y]*mat[x][y-1]*mat[x][y-2]*mat[x][y-3])
+}
+
+function getUp(mat, x, y){
+  if (x<3) return -1
+  return (mat[x][y]*mat[x-1][y]*mat[x-2][y]*mat[x-3][y])
+}
+
+function getDown(mat, x, y){
+  if (x>mat.length-4) return -1
+  return (mat[x][y]*mat[x+1][y]*mat[x+2][y]*mat[x+3][y])
+
+}
 
 
 // The following is required to make unit tests work.
