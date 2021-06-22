@@ -76,6 +76,12 @@ function averageWordLength(arr) {
 }
 
 // Bonus - Iteration #4.1
+
+// grabbed from https://stackoverflow.com/questions/32229667/have-max-2-decimal-places/32229831
+function toFixedIfNecessary( value, dp ){
+  return +parseFloat(value).toFixed( dp );
+}
+
 function avg(arr) {
   if (arr === undefined || arr.length == 0) return null
   
@@ -99,7 +105,7 @@ function avg(arr) {
     }
   }
 
-  return sumN / arr.length;
+  return toFixedIfNecessary(sumN / arr.length, 2);
 }
 
 // Iteration #5: Unique arrays
