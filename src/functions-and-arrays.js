@@ -243,7 +243,43 @@ function getUp(mat, x, y){
 function getDown(mat, x, y){
   if (x>mat.length-4) return -1
   return (mat[x][y]*mat[x+1][y]*mat[x+2][y]*mat[x+3][y])
+}
 
+// Iteration #8.1: Bonus
+
+function greatestProductOfDiagonals(mat){
+  let max = -1;
+
+  for (let x = 0; x < mat.length; x++){
+    for (let y = 0; y < mat[0].length; y++){
+      max = maxOfTwoNumbers(max, getUpRight(mat, x, y))
+      max = maxOfTwoNumbers(max, getBottomRight(mat, x, y))
+      max = maxOfTwoNumbers(max, getBottomLeft(mat, x, y))
+      max = maxOfTwoNumbers(max, getUpLeft(mat, x, y))
+    }
+  }
+
+  return max;
+}
+
+function getUpRight(mat, x, y){
+  if (y>mat[0].length-4 || x<3) return -1
+  return (mat[x][y]*mat[x-1][y+1]*mat[x-2][y+2]*mat[x-3][y+3])
+}
+
+function getBottomRight(mat, x, y){
+  if (y>mat[0].length-4 || x>mat.length-4) return -1
+  return (mat[x][y]*mat[x+1][y+1]*mat[x+2][y+2]*mat[x+3][y+3])
+}
+
+function getBottomLeft(mat, x, y){
+  if (y<3 || x>mat.length-4) return -1
+  return (mat[x][y]*mat[x+1][y-1]*mat[x+2][y-2]*mat[x+3][y-3])
+}
+
+function getUpLeft(mat, x, y){
+  if (y<3 || x<3) return -1
+  return (mat[x][y]*mat[x-1][y-1]*mat[x-2][y-2]*mat[x-3][y-3])
 }
 
 
@@ -261,6 +297,7 @@ if (typeof module !== 'undefined') {
     uniquifyArray,
     doesWordExist,
     howManyTimes,
-    greatestProduct
+    greatestProduct,
+    greatestProductOfDiagonals
   };
 }
